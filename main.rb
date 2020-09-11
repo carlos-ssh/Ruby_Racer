@@ -5,7 +5,7 @@ class Race
     winner = nil
 
     until !winner
-        players.each do |p|
+        players.shuffle.each do |p|
                 dice = 1 + rand(6)
                 p[:position] += dice
             if position >= 100
@@ -13,5 +13,9 @@ class Race
             break
             end
         end
+        players.each do |p|
+            puts "#{[p.name]}: #{[p.position]}"
+        end
     end
+    puts "El ganador es: #{winner[:name]}" if winner
 end
